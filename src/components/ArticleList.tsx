@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Result } from "../types/Articles";
 import Article from "./Article";
+import { useNavigate } from "react-router-dom";
 
 
 const ArticleList = function () {
   const [articles, setArticles] = useState<null | Result[]>(null);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetchArticles();
@@ -42,7 +45,7 @@ const ArticleList = function () {
       {articles && (
         <>
           <Container >
-            <Row >
+            <Row onClick={()=>{navigate(`/article/${articles[0].id}`)}}>
               <Col>
                   <div >
                     <img src={articles[0].image_url} alt="Article Poster" className="img-fluid border border-1 rounded-4"/>
@@ -64,8 +67,16 @@ const ArticleList = function () {
           </Container>
           <Container className="mt-3">
             <Row>
-              <Col>
-                    <Article />
+              <Col xs={9}>
+              {
+                articles.slice(1).map((element) => {
+                    return <Article article={element} key={element.id}/>
+                    
+                })
+              }
+              </Col>
+              <Col xs={3} className="border border-1">
+                    <h4 className="text-center mt-2 fw-bold">ALSO TODAY:</h4>
               </Col>
             </Row>
           </Container>

@@ -11,7 +11,7 @@ export interface Result {
     updated_at:   Date;
     featured:     boolean;
     launches:     Launch[];
-    events:       any[];
+    events:       unknown[];
 }
 
 export interface Author {

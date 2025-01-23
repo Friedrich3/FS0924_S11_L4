@@ -17,7 +17,7 @@ const Article = function () {
                 longer.
               </Card.Text>
               <Card.Text>
-                <small class="text-muted">Last updated 3 mins ago</small>
+                <small className="text-muted">Last updated 3 mins ago</small>
               </Card.Text>
             </Card.Body>
           </Col>
